@@ -704,7 +704,39 @@ https://www.wolfram.com/mathematica/new-in-10/highly-automated-machine-learning/
 
 
 ### Troubleshooting
-#### login to oc - set env vars
+
+#### minishift does not startup due to github api limits exceeded
+
+> if starting up minishift you need an reasonably fast internet connection
+> even if you have this github api limits may be reached so minishift startup fails!
+
+There are various solutions to work around this, in order of preference:
+
+1) start minishift from an ISO image
+1) wait until GitHub API number of calls has been reset
+1) use a token that you may have if you have access to Enterprise GitHub
+1) use another internet connection ( like you phone's hotspot )
+
+1) Use an ISO image
+To use a locally available ISO image, follow these steps:
+
+Manually download the Minishift CentOS ISO image from [here](https://github.com/minishift/minishift-centos-iso/releases)
+and save it to your local hard drive, in my case `~/Downloads/minishift-centos7.iso` pass this as a full path like this example below and minishift will start from an ISO image 
+
+```sh
+
+minishift start --vm-driver virtualbox --iso-url file:///Users/grantsteinfeld/Downloads/minishift-centos7.iso --network-nameserver 8.8.8.8
+
+```
+2) Waiting - ( tbd time to wait? )
+
+4) Use a token ( tbd how to do this )
+
+5) Use another wifi connection, like your phone's hotspot - but be aware you will use up a fair amount of data if you've not started it before!
+
+#### oc does not show up on your commnd line
+
+> login to oc - set env vars
 
 Verify that you can access the web console and login as developer in the web console, and as system:admin in your terminal/shell window
 If using minishift, obtain the commands you need to type into your shell in order to add the oc binary to your PATH environment variable:
